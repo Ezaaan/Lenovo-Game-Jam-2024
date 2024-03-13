@@ -6,8 +6,8 @@ using UnityEngine;
 public class MilfGhostController : MonoBehaviour
 {
     bool isCalling = false;
-    GameObject receivingObject;
 
+    public GameObject receivingObject;
     public float speed = 5f;
     public void MoveLeft() {transform.position -= speed * Time.deltaTime * transform.right;}
     public void MoveRight() {transform.position += speed * Time.deltaTime * transform.right;}
@@ -22,8 +22,7 @@ public class MilfGhostController : MonoBehaviour
     void FixedUpdate()
     {
         if(isCalling) {
-            receivingObject = GameObject.Find ("lil nigga");
-            receivingObject.SendMessage("SetTargetPos", transform.position);
+            receivingObject.GetComponent<TestLilNiggaController>().SetTargetPos(transform.position);
             isCalling = false;
         }
     }
