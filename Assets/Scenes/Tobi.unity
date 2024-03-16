@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 294b0af06632fab47be35f79996dc9f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  receivingObject: {fileID: 0}
+  receivingObject: {fileID: 1535681830}
   speed: 5
 --- !u!114 &1202456808
 MonoBehaviour:

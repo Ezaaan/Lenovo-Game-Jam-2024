@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     private bool isFollowingMommy = true;
     private CameraHandler cameraHandler;
     private GameObject camera;
+    private MilfGhostInput milfGhostInput;
 
     // Start is called before the first frame update
     void Start()
@@ -14,6 +15,7 @@ public class GameManager : MonoBehaviour
 
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraHandler = camera.GetComponent<CameraHandler>();
+        milfGhostInput = GameObject.FindGameObjectWithTag("mommy").GetComponent<MilfGhostInput>();
     }
 
     // Update is called once per frame
@@ -25,11 +27,13 @@ public class GameManager : MonoBehaviour
             {
                 cameraHandler.changeTarget("daddy");
                 isFollowingMommy = false;
+                milfGhostInput.SetInputActive(false);
             }
             else
             {
                 cameraHandler.changeTarget("mommy");
                 isFollowingMommy = true;
+                milfGhostInput.SetInputActive(true);
             }
         }
     }
