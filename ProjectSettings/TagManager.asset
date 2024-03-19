@@ -6,6 +6,7 @@ TagManager:
   tags:
   - mommy
   - daddy
+  - Possessable
   layers:
   - Default
   - TransparentFX
