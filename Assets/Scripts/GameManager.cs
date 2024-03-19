@@ -4,10 +4,34 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager instance;
     private bool isFollowingMommy = true;
+    public bool isControllingbject = false;
     private CameraHandler cameraHandler;
     private GameObject camera;
     private MilfGhostInput milfGhostInput;
+    private PlayerMovement daddyInput;
+    
+
+    private void Awake()
+    {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
+    private enum starterGhost
+    {
+        mommy,
+        daddy
+    }
+
+    [SerializeField]
+    private starterGhost starter = starterGhost.mommy;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +40,20 @@ public class GameManager : MonoBehaviour
         camera = GameObject.FindGameObjectWithTag("MainCamera");
         cameraHandler = camera.GetComponent<CameraHandler>();
         milfGhostInput = GameObject.FindGameObjectWithTag("mommy").GetComponent<MilfGhostInput>();
+        daddyInput = GameObject.FindGameObjectWithTag("daddy").GetComponent<PlayerMovement>();
+
+        if (starter == starterGhost.mommy)
+        {
+            cameraHandler.changeTarget("mommy");
+            milfGhostInput.SetInputActive(true);
+            daddyInput.SetInputActive(false);
+        }
+        else
+        {
+            cameraHandler.changeTarget("daddy");
+            milfGhostInput.SetInputActive(false);
+            daddyInput.SetInputActive(true);
+        }
     }
 
     // Update is called once per frame
@@ -28,12 +66,17 @@ public class GameManager : MonoBehaviour
                 cameraHandler.changeTarget("daddy");
                 isFollowingMommy = false;
                 milfGhostInput.SetInputActive(false);
+                daddyInput.SetInputActive(true);
             }
             else
             {
-                cameraHandler.changeTarget("mommy");
-                isFollowingMommy = true;
-                milfGhostInput.SetInputActive(true);
+                if (!isControllingbject)
+                {
+                    cameraHandler.changeTarget("mommy");
+                    isFollowingMommy = true;
+                    milfGhostInput.SetInputActive(true);
+                    daddyInput.SetInputActive(false);
+                }
             }
         }
     }

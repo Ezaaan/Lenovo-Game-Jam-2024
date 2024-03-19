@@ -15,6 +15,8 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private float timeToDecelerate = 0.12f;
     private float deceleration;
 
+    private bool isInputActive = true;
+
 
     /* Private fields */
     private const int LEFT = -1;
@@ -33,6 +35,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
+        if (!isInputActive)
+        {
+            return;
+        }
         // Input
         Vector2 moveInput = playerInput.MoveInput;
         previousMove = move;
@@ -71,5 +77,10 @@ public class PlayerMovement : MonoBehaviour
         // If the input is 0, use the buffer to maintain the last movement until current speed is 0
         Vector3 appliedMove = shouldDecelerate ? bufferMove : move;
         transform.position += CurrentSpeed * Time.fixedDeltaTime * appliedMove;
+    }
+
+    public void SetInputActive(bool _isActive)
+    {
+        isInputActive = _isActive;
     }
 }

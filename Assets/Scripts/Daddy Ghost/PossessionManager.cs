@@ -30,6 +30,7 @@ public class PossessionManager : MonoBehaviour
 
         obj.GetComponent<PlayerMovement>().enabled = true;
         obj.GetComponent<Rigidbody2D>().gravityScale = 0;
+        GameManager.instance.isControllingbject = true;
     }
 
     public void SetControlToPlayer(Object obj)
@@ -37,5 +38,6 @@ public class PossessionManager : MonoBehaviour
         obj.GetComponent<PlayerMovement>().enabled = false;
         obj.GetComponent<Rigidbody2D>().gravityScale = 1;
         daddy.GetComponent<PlayerMovement>().enabled = true;
+        GameManager.instance.isControllingbject = false;
     }
 }
