@@ -23,26 +23,23 @@ public class PossessionManager : MonoBehaviour
 
     public void SetControlToObject(Object obj)
     {
-        if( !objectCotrolled )
-        {
-            daddy.GetComponent<PlayerMovement>().enabled = false;
-            foreach (var movableObject in FindObjectsOfType<PlayerMovement>())
-            {
-                movableObject.enabled = false;
-            }
-
-            obj.GetComponent<PlayerMovement>().enabled = true;
-            obj.GetComponent<Rigidbody2D>().gravityScale = 0;
-            GameManager.instance.isControllingbject = true;
-            objectCotrolled = false;
-        }
+        daddy.GetComponent<PlayerMovement>().enabled = false;
+        daddy.GetComponent<FatherController>().enabled = false;
+        obj.GetComponent<ObjectMovement>().enabled = true;
+        obj.GetComponent<Rigidbody2D>().gravityScale = 0;
+        obj.GetComponent<PossesionController>().enabled = true;
+        GameManager.instance.isControllingObject = true;
     }
 
     public void SetControlToPlayer(Object obj)
     {
-        obj.GetComponent<PlayerMovement>().enabled = false;
+        obj.GetComponent<ObjectMovement>().enabled = false;
         obj.GetComponent<Rigidbody2D>().gravityScale = 1;
+        obj.GetComponent<PossesionController>().enabled= false;
         daddy.GetComponent<PlayerMovement>().enabled = true;
-        GameManager.instance.isControllingbject = false;
+        daddy.GetComponent<FatherController>().enabled = true;
+
+        GameManager.instance.isControllingObject = false;
+        Debug.Log("adwadwa");
     }
 }

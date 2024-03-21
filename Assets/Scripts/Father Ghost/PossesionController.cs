@@ -10,24 +10,30 @@ public class PossesionController : MonoBehaviour
 
     private void Update()
     {
-        if (!isControlled)
-        {
-            if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
-            {
-                Debug.Log("eeee");
-                PossessionManager.instance.SetControlToObject(this.gameObject);
-                isControlled = true;
-            }
-        }
-        else
-        {
-            if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.E))
             {
                 Debug.Log("EEEE");
                 PossessionManager.instance.SetControlToPlayer(this.gameObject);
                 isControlled = false;
             }
-        }
+        //if (!isControlled)
+        //{
+        //    if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("eeee");
+        //        PossessionManager.instance.SetControlToObject(this.gameObject);
+        //        isControlled = true;
+        //    }
+        //}
+        //else
+        //{
+        //    if (Input.GetKeyDown(KeyCode.E))
+        //    {
+        //        Debug.Log("EEEE");
+        //        PossessionManager.instance.SetControlToPlayer(this.gameObject);
+        //        isControlled = false;
+        //    }
+        //}
         
     }
 

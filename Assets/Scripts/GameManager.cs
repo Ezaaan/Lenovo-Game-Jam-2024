@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
     private bool isFollowingMommy = true;
-    public bool isControllingbject = false;
+    public bool isControllingObject = false;
     private CameraHandler cameraHandler;
     [SerializeField] private Camera MainCamera;
     [SerializeField] private GameObject Father;
@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         {
             if (isFollowingMommy)
             {
+
                 cameraHandler.changeTarget("daddy");
                 isFollowingMommy = false;
                 Mother.GetComponent<PlayerMovement>().SetInputActive(false);
@@ -69,7 +70,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                if (!isControllingbject)
+                if (!isControllingObject)
                 {
                     cameraHandler.changeTarget("mommy");
                     isFollowingMommy = true;
@@ -79,5 +80,10 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+    }
+
+    public Camera GetCamera()
+    {
+        return MainCamera;
     }
 }
