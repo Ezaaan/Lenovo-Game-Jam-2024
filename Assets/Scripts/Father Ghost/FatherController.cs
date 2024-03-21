@@ -10,14 +10,34 @@ public class DaddyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
 
+
+    }
+
+    private void Update()
+    {
     }
 
     private void FixedUpdate()
     {
-        horizontal = Input.GetAxis("Horizontal");
-        vertical = Input.GetAxis("Vertical");
-        rb.velocity = new Vector2 (horizontal * speed, vertical * speed);
+
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            checkColiders();
+        }
+    }
+
+    void checkColiders()
+    {
+        Collider2D[] hitColliders = Physics2D.OverlapCircleAll(transform.position, 20f);
+
+        foreach (Collider2D collider in hitColliders)
+        {
+            if (collider.gameObject.tag == "Possessable")
+            {
+                SpriteRenderer spr = collider.gameObject.GetComponent<SpriteRenderer>();
+                spr.color = Color.blue;
+            }
+        }
     }
 }

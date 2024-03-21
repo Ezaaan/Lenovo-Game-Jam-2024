@@ -7,6 +7,7 @@ public class PossessionManager : MonoBehaviour
 {
     public static PossessionManager instance;
     public GameObject daddy;
+    private bool objectCotrolled = false;
 
     private void Awake()
     {
@@ -22,15 +23,19 @@ public class PossessionManager : MonoBehaviour
 
     public void SetControlToObject(Object obj)
     {
-        daddy.GetComponent<PlayerMovement>().enabled = false;
-        foreach (var movableObject in FindObjectsOfType<PlayerMovement>())
+        if( !objectCotrolled )
         {
-            movableObject.enabled = false;
-        }
+            daddy.GetComponent<PlayerMovement>().enabled = false;
+            foreach (var movableObject in FindObjectsOfType<PlayerMovement>())
+            {
+                movableObject.enabled = false;
+            }
 
-        obj.GetComponent<PlayerMovement>().enabled = true;
-        obj.GetComponent<Rigidbody2D>().gravityScale = 0;
-        GameManager.instance.isControllingbject = true;
+            obj.GetComponent<PlayerMovement>().enabled = true;
+            obj.GetComponent<Rigidbody2D>().gravityScale = 0;
+            GameManager.instance.isControllingbject = true;
+            objectCotrolled = false;
+        }
     }
 
     public void SetControlToPlayer(Object obj)

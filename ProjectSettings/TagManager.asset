@@ -7,6 +7,7 @@ TagManager:
   - mommy
   - daddy
   - Possessable
+  - child
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - UI
   - Ghost
   - Terrain
-  - 
+  - child
   - 
   - 
   - 

@@ -57,26 +57,29 @@ public class PlayerMovement : MonoBehaviour
             int yRot = lookDirection == 1 ? 0 : 180;
             transform.rotation = Quaternion.Euler(0, yRot, 0);
         }
-    }
 
-    private void FixedUpdate()
-    {
-        bool shouldDecelerate = move.magnitude == 0;
+        CurrentSpeed += acceleration * Time.fixedDeltaTime;
 
-        if (shouldDecelerate)
-        {
-            CurrentSpeed -= deceleration * Time.fixedDeltaTime;
-        }
-        else
-        {
-            CurrentSpeed += acceleration * Time.fixedDeltaTime;
-        }
 
         CurrentSpeed = Mathf.Clamp(CurrentSpeed, 0, maxSpeed);
 
         // If the input is 0, use the buffer to maintain the last movement until current speed is 0
-        Vector3 appliedMove = shouldDecelerate ? bufferMove : move;
+        Vector3 appliedMove = move;
         transform.position += CurrentSpeed * Time.fixedDeltaTime * appliedMove;
+    }
+
+    private void FixedUpdate()
+    {
+        
+        
+        //CurrentSpeed += acceleration * Time.fixedDeltaTime;
+        
+
+       // CurrentSpeed = Mathf.Clamp(CurrentSpeed, 0, maxSpeed);
+
+        // If the input is 0, use the buffer to maintain the last movement until current speed is 0
+        //Vector3 appliedMove = move;
+        //transform.position += CurrentSpeed * Time.fixedDeltaTime * appliedMove;
     }
 
     public void SetInputActive(bool _isActive)

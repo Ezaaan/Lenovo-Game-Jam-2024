@@ -11,10 +11,12 @@ class PlayerInput : ScriptableObject
     public KeyCode Right;
 
     [Header("Action Keys")]
-    public KeyCode Call;
+    public KeyCode SpecialAction;
 
     public Vector2 MoveInput => new Vector2(
         Convert.ToInt32(Input.GetKey(Right)) - Convert.ToInt32(Input.GetKey(Left)),
         Convert.ToInt32(Input.GetKey(Up)) - Convert.ToInt32(Input.GetKey(Down))
     );
+
+
 }

@@ -16,4 +16,4 @@ MonoBehaviour:
   Down: 115
   Left: 97
   Right: 100
-  Call: 325
+  SpecialAction: 113

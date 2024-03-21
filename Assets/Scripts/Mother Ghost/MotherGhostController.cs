@@ -22,7 +22,7 @@ public class MilfGhostController : MonoBehaviour
     void FixedUpdate()
     {
         if(isCalling) {
-            receivingObject.GetComponent<TestLilNiggaController>().SetTargetPos(transform.position);
+            receivingObject.GetComponent<ChildController>().SetTargetPos(transform.position);
             isCalling = false;
         }
     }
