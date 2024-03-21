@@ -11,11 +11,11 @@ public class PossesionController : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.E))
-            {
-                Debug.Log("EEEE");
-                PossessionManager.instance.SetControlToPlayer(this.gameObject);
-                isControlled = false;
-            }
+        {
+            Debug.Log("EEEE");
+            PossessionManager.instance.SetControlToPlayer(this.gameObject);
+            isControlled = false;
+        }
         //if (!isControlled)
         //{
         //    if (isPlayerNearby && Input.GetKeyDown(KeyCode.E))
@@ -34,7 +34,7 @@ public class PossesionController : MonoBehaviour
         //        isControlled = false;
         //    }
         //}
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -35,7 +35,7 @@ public class PossessionManager : MonoBehaviour
     {
         obj.GetComponent<ObjectMovement>().enabled = false;
         obj.GetComponent<Rigidbody2D>().gravityScale = 1;
-        obj.GetComponent<PossesionController>().enabled= false;
+        obj.GetComponent<PossesionController>().enabled = false;
         daddy.GetComponent<PlayerMovement>().enabled = true;
         daddy.GetComponent<FatherController>().enabled = true;
 

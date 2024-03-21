@@ -45,7 +45,7 @@ public class FatherController : MonoBehaviour
                 index = 0;
                 hitColliders.Clear();
             }
-            
+
 
         }
 
@@ -62,7 +62,7 @@ public class FatherController : MonoBehaviour
                 index++;
             }
         }
-        
+
     }
 
     void checkColiders()
