@@ -18,16 +18,19 @@ public class PlayerAction : MonoBehaviour
     private float deceleration;
 
     private bool isInputActive = true;
+    //private GameManager gameManager;
     private void Awake()
     {
+        //gameManager = GameManager.instance;
     }
 
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetKeyDown(playerInput.SpecialAction))
         {
-            if (gameObject.tag == "mommy") { CallAction(); }
+            if (GameManager.instance.isMotherActive && gameObject.tag=="mommy") { CallAction(); }
             else { PossessAction(); }
         }
     }
