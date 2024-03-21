@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Camera MainCamera;
     [SerializeField] private GameObject Father;
     [SerializeField] private GameObject Mother;
+    public bool isMotherActive;
     
 
     private void Awake()
@@ -42,12 +43,14 @@ public class GameManager : MonoBehaviour
         if (starter == starterGhost.mommy)
         {
             cameraHandler.changeTarget("mommy");
+            isMotherActive = true;
             Mother.GetComponent<PlayerMovement>().SetInputActive(true);
             Father.GetComponent<PlayerMovement>().SetInputActive(false);
         }
         else
         {
             cameraHandler.changeTarget("daddy");
+            isMotherActive = false;
             Mother.GetComponent<PlayerMovement>().SetInputActive(false);
             Father.GetComponent<PlayerMovement>().SetInputActive(true);
 
@@ -63,6 +66,7 @@ public class GameManager : MonoBehaviour
             {
                 cameraHandler.changeTarget("daddy");
                 isFollowingMommy = false;
+                isMotherActive = false;
                 Mother.GetComponent<PlayerMovement>().SetInputActive(false);
                 Father.GetComponent<PlayerMovement>().SetInputActive(true);
 
@@ -73,11 +77,17 @@ public class GameManager : MonoBehaviour
                 {
                     cameraHandler.changeTarget("mommy");
                     isFollowingMommy = true;
+                    isMotherActive = true;
                     Mother.GetComponent<PlayerMovement>().SetInputActive(true);
                     Father.GetComponent<PlayerMovement>().SetInputActive(false);
 
                 }
             }
         }
+    }
+
+    public bool checkIfMotherActive()
+    {
+        return isMotherActive;
     }
 }
