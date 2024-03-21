@@ -8,9 +8,9 @@ public class GameManager : MonoBehaviour
     private bool isFollowingMommy = true;
     public bool isControllingbject = false;
     private CameraHandler cameraHandler;
-    private GameObject camera;
-    private MilfGhostInput milfGhostInput;
-    private PlayerMovement daddyInput;
+    [SerializeField] private Camera MainCamera;
+    [SerializeField] private GameObject Father;
+    [SerializeField] private GameObject Mother;
     
 
     private void Awake()
@@ -37,22 +37,20 @@ public class GameManager : MonoBehaviour
     void Start()
     {
 
-        camera = GameObject.FindGameObjectWithTag("MainCamera");
-        cameraHandler = camera.GetComponent<CameraHandler>();
-        milfGhostInput = GameObject.FindGameObjectWithTag("mommy").GetComponent<MilfGhostInput>();
-        daddyInput = GameObject.FindGameObjectWithTag("daddy").GetComponent<PlayerMovement>();
+        cameraHandler = MainCamera.GetComponent<CameraHandler>();
 
         if (starter == starterGhost.mommy)
         {
             cameraHandler.changeTarget("mommy");
-            milfGhostInput.SetInputActive(true);
-            daddyInput.SetInputActive(false);
+            Mother.GetComponent<PlayerMovement>().SetInputActive(true);
+            Father.GetComponent<PlayerMovement>().SetInputActive(false);
         }
         else
         {
             cameraHandler.changeTarget("daddy");
-            milfGhostInput.SetInputActive(false);
-            daddyInput.SetInputActive(true);
+            Mother.GetComponent<PlayerMovement>().SetInputActive(false);
+            Father.GetComponent<PlayerMovement>().SetInputActive(true);
+
         }
     }
 
@@ -65,8 +63,9 @@ public class GameManager : MonoBehaviour
             {
                 cameraHandler.changeTarget("daddy");
                 isFollowingMommy = false;
-                milfGhostInput.SetInputActive(false);
-                daddyInput.SetInputActive(true);
+                Mother.GetComponent<PlayerMovement>().SetInputActive(false);
+                Father.GetComponent<PlayerMovement>().SetInputActive(true);
+
             }
             else
             {
@@ -74,8 +73,9 @@ public class GameManager : MonoBehaviour
                 {
                     cameraHandler.changeTarget("mommy");
                     isFollowingMommy = true;
-                    milfGhostInput.SetInputActive(true);
-                    daddyInput.SetInputActive(false);
+                    Mother.GetComponent<PlayerMovement>().SetInputActive(true);
+                    Father.GetComponent<PlayerMovement>().SetInputActive(false);
+
                 }
             }
         }
