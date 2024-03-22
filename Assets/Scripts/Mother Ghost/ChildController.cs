@@ -20,9 +20,12 @@ public class ChildController : MonoBehaviour
     public Animator animator;
 
     public void SetTargetPos(Vector3 position) {
-        isCalled = true;
-        threshold = .0f;
-        targetPosition = position;
+        if (this.gameObject.GetComponent<ChildJump>().IsGrounded()) 
+        {
+            isCalled = true;
+            threshold = .0f;
+            targetPosition = position;
+        }
     }
 
     // Start is called before the first frame update

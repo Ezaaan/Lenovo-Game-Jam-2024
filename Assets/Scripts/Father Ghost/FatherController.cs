@@ -57,8 +57,8 @@ public class FatherController : MonoBehaviour
                 int nextInd = index + 1;
                 SpriteRenderer nxtspr = hitColliders[nextInd % hitColliders.Count].gameObject.GetComponent<SpriteRenderer>();
                 SpriteRenderer spr = hitColliders[index % hitColliders.Count].gameObject.GetComponent<SpriteRenderer>();
-                nxtspr.color = new Color(0, 0, 1, 0.3f);
                 spr.color = Color.white;
+                nxtspr.color = new Color(0, 0, 1, 0.3f);
                 index++;
             }
         }

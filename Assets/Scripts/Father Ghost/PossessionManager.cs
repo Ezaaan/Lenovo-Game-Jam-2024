@@ -42,6 +42,5 @@ public class PossessionManager : MonoBehaviour
         daddy.GetComponent<SpriteRenderer>().color = Color.white;
 
         GameManager.instance.isControllingObject = false;
-        Debug.Log("adwadwa");
     }
 }

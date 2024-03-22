@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class ChildJump : MonoBehaviour
 {
-    public float rayDistance = 10f;
-    public float jumpForce = 20f;
+    public float rayDistance = 15f;
+    public float jumpForce = 25f;
+    public float fallMultiplier = 1f;
 
     public Transform groundCheck;
     public LayerMask groundLayer;
@@ -13,11 +14,13 @@ public class ChildJump : MonoBehaviour
 
     Rigidbody2D rb;
     Vector2 RayOrigin;
+    Vector2 fall;
 
     // Start is called before the first frame update
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        fall = new Vector2(0, -Physics2D.gravity.y);
     }
 
     private void Update()
@@ -31,7 +34,7 @@ public class ChildJump : MonoBehaviour
         Debug.DrawRay(RayOrigin, Vector2.left * rayDistance, Color.red);
 
         
-        if ((hitRight.collider != null || hitLeft.collider != null) && IsGrounded())
+        if ((hitRight.collider != null || hitLeft.collider != null) && IsGrounded() && this.gameObject.GetComponent<ChildController>().isCalled)
         {
             animator.SetBool("isManjat", true);
             Debug.Log("Jump");
@@ -45,9 +48,11 @@ public class ChildJump : MonoBehaviour
                 animator.SetBool("isManjat", false);
             }
         }
+
+        rb.velocity -= fall * fallMultiplier * Time.deltaTime;
     }
 
-    private bool IsGrounded()
+    public bool IsGrounded()
     {
         return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
