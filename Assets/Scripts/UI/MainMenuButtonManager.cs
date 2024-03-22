@@ -13,6 +13,10 @@ public class MainMenuButtonManager : MonoBehaviour
     }
 
     public void SetActiveButton(int idx) {
+        if (idx == activeButtonIdx) return;
+
+        AudioManager.Instance.PlaySFX("Select");
+
         Image prevBtn = listOfButtonImage[activeButtonIdx];
         Image toBtn = listOfButtonImage[idx];
 
