@@ -44,7 +44,6 @@ public class ChildController : MonoBehaviour
 
         if((int)targetPosition.x != (int)transform.position.x) {
             
-            if(!animator.GetBool("isManjat")) { animator.SetBool("isMoving", true); }
 
             if (Mathf.Sign(targetPosition.x) != lookDirection && targetPosition.x != 0)
             {
@@ -56,10 +55,12 @@ public class ChildController : MonoBehaviour
             Vector3 _direction = new(targetPosition.x - transform.position.x, 0f, 0f);
             transform.position += speed * Time.deltaTime * _direction.normalized;
             threshold += Time.deltaTime;
-            if (threshold >= 2f && hitSomething) { targetPosition = new(transform.position.x-1f, transform.position.y); }
+            Debug.Log(targetPosition.x);
+            if (threshold >= 2f && hitSomething) { Debug.Log("stuck");  targetPosition = new(transform.position.x-1f, transform.position.y); }
             prevPosition = transform.position;
         } else {
             animator.SetBool("isMoving", false);
+            Debug.Log("haha");
             isCalled = false;
         }
     }

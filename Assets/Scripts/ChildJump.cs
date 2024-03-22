@@ -37,6 +37,7 @@ public class ChildJump : MonoBehaviour
         if ((hitRight.collider != null || hitLeft.collider != null) && IsGrounded() && this.gameObject.GetComponent<ChildController>().isCalled)
         {
             animator.SetBool("isManjat", true);
+            Debug.Log(animator.GetBool("isManjat"));
             Debug.Log("Jump");
             Jump();
         }
@@ -46,6 +47,8 @@ public class ChildJump : MonoBehaviour
            animator.GetCurrentAnimatorStateInfo(0).normalizedTime) && animator.GetCurrentAnimatorStateInfo(0).IsName("bocil_manjat"))
             {
                 animator.SetBool("isManjat", false);
+                Debug.Log("Jumpx");
+
             }
         }
 
