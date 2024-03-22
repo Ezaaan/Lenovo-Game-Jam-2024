@@ -53,7 +53,7 @@ public class ChildController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (Mathf.Abs(targetPosition.x - transform.position.x) >= .5f)
+        if (Mathf.Abs(targetPosition.x - transform.position.x) >= 1.5f)
         {
             if (first)
             {
@@ -72,7 +72,7 @@ public class ChildController : MonoBehaviour
     void Update()
     {
 
-        if(Mathf.Abs(targetPosition.x - transform.position.x) >= .5f) {
+        if(Mathf.Abs(targetPosition.x - transform.position.x) >= 1.5f) {
             
             if (Mathf.Sign(targetPosition.x) != lookDirection && targetPosition.x != 0)
             {
@@ -86,7 +86,7 @@ public class ChildController : MonoBehaviour
             transform.position += speed * Time.deltaTime * _direction.normalized;
             threshold += Time.deltaTime;
             Debug.Log(targetPosition.x);
-            if (threshold >= 2f && hitSomething) { Debug.Log("stuck");  targetPosition = new(transform.position.x-1f, transform.position.y); }
+            if (Mathf.Abs(threshold) >= 2f && hitSomething) { Debug.Log("stuck");  targetPosition = new(transform.position.x-1f, transform.position.y); }
             prevPosition = transform.position;
         } else {
             animator.SetBool("isMoving", false);

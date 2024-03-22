@@ -16,13 +16,13 @@ public class InstructedPlacement : MonoBehaviour
 
     private void CheckPlacement()
     {
-        Debug.Log($"{key.name}: {Mathf.Abs(key.transform.position.x - transform.position.x)}");
+        //Debug.Log($"{key.name}: {Mathf.Abs(key.transform.position.x - transform.position.x)}");
         if (Mathf.Abs(key.transform.position.x - transform.position.x) <= thresholdX && Mathf.Abs(key.transform.position.y - transform.position.y) <= thresholdY){
             isPlaced = true;
         }
         else
         {
-            Debug.Log($"{key.name}: not placed");
+            //Debug.Log($"{key.name}: not placed");
             isPlaced = false;
         }
     }
