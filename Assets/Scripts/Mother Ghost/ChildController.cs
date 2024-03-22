@@ -17,6 +17,8 @@ public class ChildController : MonoBehaviour
     private bool hitSomething = false;
     Vector2 prevPosition;
 
+    public Animator animator;
+
     public void SetTargetPos(Vector3 position) {
         isCalled = true;
         threshold = .0f;
@@ -38,6 +40,8 @@ public class ChildController : MonoBehaviour
     {
 
         if((int)targetPosition.x != (int)transform.position.x) {
+            
+            if(!animator.GetBool("isManjat")) { animator.SetBool("isMoving", true); }
 
             if (Mathf.Sign(targetPosition.x) != lookDirection && targetPosition.x != 0)
             {
@@ -52,6 +56,7 @@ public class ChildController : MonoBehaviour
             if (threshold >= 2f && hitSomething) { targetPosition = new(transform.position.x-1f, transform.position.y); }
             prevPosition = transform.position;
         } else {
+            animator.SetBool("isMoving", false);
             isCalled = false;
         }
     }
