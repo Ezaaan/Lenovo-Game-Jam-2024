@@ -21,7 +21,6 @@ public class ChildController : MonoBehaviour
         isCalled = true;
         threshold = .0f;
         targetPosition = position;
-        Debug.Log("called");
     }
 
     // Start is called before the first frame update
@@ -50,9 +49,10 @@ public class ChildController : MonoBehaviour
             Vector3 _direction = new(targetPosition.x - transform.position.x, 0f, 0f);
             transform.position += speed * Time.deltaTime * _direction.normalized;
             threshold += Time.deltaTime;
-            Debug.Log(threshold);
             if (threshold >= 2f && hitSomething) { targetPosition = new(transform.position.x-1f, transform.position.y); }
             prevPosition = transform.position;
+        } else {
+            isCalled = false;
         }
     }
 

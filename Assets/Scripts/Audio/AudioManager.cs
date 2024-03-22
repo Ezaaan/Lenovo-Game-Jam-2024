@@ -31,11 +31,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlaySFX(string name) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null) {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
+        Sound s = GetSound(name);
         s.source.Play();
 
         if (!s.loop && s.OnFinishPlaying != null) {
@@ -44,12 +40,7 @@ public class AudioManager : MonoBehaviour
     }
 
     public void PlayBGM(string name) {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
-        if (s == null) {
-            Debug.LogWarning("Sound: " + name + " not found!");
-            return;
-        }
-
+        Sound s = GetSound(name);
         playedBGM?.source.Stop();
         playedBGM = s;
         s.source.Play();
@@ -57,6 +48,15 @@ public class AudioManager : MonoBehaviour
         if (!s.loop && s.OnFinishPlaying != null) {
             StartCoroutine(HandleOnAudioFinish(s));
         }
+    }
+
+    public Sound GetSound(string name) {
+        Sound s = Array.Find(sounds, sound => sound.name == name);
+        if (s == null) {
+            Debug.LogWarning("Sound: " + name + " not found!");
+            return null;
+        }
+        return s;
     }
 
     public IEnumerator HandleOnAudioFinish(Sound s) {
