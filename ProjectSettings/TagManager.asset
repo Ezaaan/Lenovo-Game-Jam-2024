@@ -8,6 +8,7 @@ TagManager:
   - daddy
   - Possessable
   - child
+  - Floor
   layers:
   - Default
   - TransparentFX

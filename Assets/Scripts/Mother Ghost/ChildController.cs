@@ -14,6 +14,8 @@ public class ChildController : MonoBehaviour
     private const int LEFT = -1;
     private const int RIGHT = 1;
     private int lookDirection;
+    private bool hitSomething = false;
+    Vector2 prevPosition;
 
     public void SetTargetPos(Vector3 position) {
         isCalled = true;
@@ -48,7 +50,20 @@ public class ChildController : MonoBehaviour
             Vector3 _direction = new(targetPosition.x - transform.position.x, 0f, 0f);
             transform.position += speed * Time.deltaTime * _direction.normalized;
             threshold += Time.deltaTime;
-            if (threshold >= 2f) { targetPosition = transform.position; }
+            Debug.Log(threshold);
+            if (threshold >= 2f && hitSomething) { targetPosition = new(transform.position.x-1f, transform.position.y); }
+            prevPosition = transform.position;
         }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "Floor") { Debug.Log("hit something"); hitSomething = true; return; }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag != "Floor") { Debug.Log("not hit anymore"); hitSomething = false; return; }
+
     }
 }

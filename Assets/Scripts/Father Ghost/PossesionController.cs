@@ -6,14 +6,14 @@ using UnityEngine;
 public class PossesionController : MonoBehaviour
 {
     private bool isPlayerNearby = false;
-    private bool isControlled = false;
+    [SerializeField]private bool isControlled = false;
 
     private void Update()
     {
         if (Input.GetKeyUp(KeyCode.E))
         {
             Debug.Log("EEEE");
-            PossessionManager.instance.SetControlToPlayer(this.gameObject);
+            PossessionManager.instance.SetControlToPlayer(gameObject);
             isControlled = false;
         }
         //if (!isControlled)
