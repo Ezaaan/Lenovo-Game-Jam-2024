@@ -19,9 +19,11 @@ public class PlayerAction : MonoBehaviour
 
     private bool isInputActive = true;
     //private GameManager gameManager;
+    private MotherAudio motherAudio;
     private void Awake()
     {
         //gameManager = GameManager.instance;
+        motherAudio = GetComponent<MotherAudio>();
     }
 
     // Update is called once per frame
@@ -37,6 +39,7 @@ public class PlayerAction : MonoBehaviour
 
     void CallAction()
     {
+        motherAudio.PlayCallChildVoice();
         child.GetComponent<ChildController>().SetTargetPos(new Vector2(gameObject.transform.position.x, gameObject.transform.position.y));
     }
 

@@ -45,7 +45,6 @@ public class MilfGhostInput : MonoBehaviour
                 if (_angle >= 225 && Input.GetKeyUp(actionWheel))
                 {
                     controller.CallLilNigga();
-                    Debug.Log("test");
                 }
 
             }
