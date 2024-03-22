@@ -1843,6 +1843,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   isCalled: 0
+  righty: 0
   animator: {fileID: 1176696179}
 --- !u!95 &1176696179
 Animator:

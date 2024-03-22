@@ -26,9 +26,21 @@ public class ChildJump : MonoBehaviour
     private void Update()
     {
         RayOrigin = transform.position + new Vector3(0, -10f, 0);
-        RaycastHit2D hitRight = Physics2D.Raycast(RayOrigin, Vector2.right, rayDistance);
+        RaycastHit2D hitRight;
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(RayOrigin, Vector2.left, rayDistance);
+        RaycastHit2D hitLeft;
+
+        if (this.gameObject.GetComponent<ChildController>().righty)
+        {
+            hitRight = Physics2D.Raycast(RayOrigin, Vector2.right, rayDistance);
+            hitLeft = Physics2D.Raycast(RayOrigin, Vector2.left, 0);
+        }
+        else
+        {
+            hitRight = Physics2D.Raycast(RayOrigin, Vector2.right, 0);
+            hitLeft = Physics2D.Raycast(RayOrigin, Vector2.left, rayDistance);
+        }
+
 
         Debug.DrawRay(RayOrigin, Vector2.right * rayDistance, Color.red);
         Debug.DrawRay(RayOrigin, Vector2.left * rayDistance, Color.red);
@@ -50,6 +62,10 @@ public class ChildJump : MonoBehaviour
                 Debug.Log("Jumpx");
 
             }
+        }
+        if (rb.velocity.y < 10)
+        {
+            rb.velocity -= fall * 10f * Time.deltaTime;
         }
 
         rb.velocity -= fall * fallMultiplier * Time.deltaTime;

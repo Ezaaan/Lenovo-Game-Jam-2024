@@ -16,6 +16,7 @@ public class ChildController : MonoBehaviour
     private int lookDirection;
     private bool hitSomething = false;
     private bool first = true;
+    public bool righty;
     Vector2 prevPosition;
 
     public Animator animator;
@@ -23,6 +24,16 @@ public class ChildController : MonoBehaviour
     public void SetTargetPos(Vector3 position) {
         if (this.gameObject.GetComponent<ChildJump>().IsGrounded()) 
         {
+            if (position.x > transform.position.x)
+            {
+                transform.rotation = Quaternion.Euler(0, 0, 0);
+                righty = true;
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(0, 180, 0);
+                righty = false;
+            }
             isCalled = true;
             threshold = .0f;
             targetPosition = position;
