@@ -1608,7 +1608,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 973156375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3778034b92175154796df5e0dee5e997, type: 3}
+  m_Script: {fileID: 11500000, guid: 192a2cdceffc5d44ebc0956eba023ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1011914617
@@ -1853,6 +1853,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 40
   isCalled: 0
+  righty: 0
   animator: {fileID: 1176696179}
 --- !u!95 &1176696179
 Animator:
@@ -2288,7 +2289,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1378568324}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3778034b92175154796df5e0dee5e997, type: 3}
+  m_Script: {fileID: 11500000, guid: 192a2cdceffc5d44ebc0956eba023ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1388134269 stripped
@@ -2574,7 +2575,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1896789514}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3778034b92175154796df5e0dee5e997, type: 3}
+  m_Script: {fileID: 11500000, guid: 192a2cdceffc5d44ebc0956eba023ab5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1902319888 stripped
