@@ -15,6 +15,7 @@ public class ChildController : MonoBehaviour
     private const int RIGHT = 1;
     private int lookDirection;
     private bool hitSomething = false;
+    private bool first = true;
     Vector2 prevPosition;
 
     public Animator animator;
@@ -35,19 +36,36 @@ public class ChildController : MonoBehaviour
     }
     private void Awake()
     {
+        first = true;
         lookDirection = transform.rotation.y == 0 ? RIGHT : LEFT;
     }
 
+    private void FixedUpdate()
+    {
+        if (Mathf.Abs(targetPosition.x - transform.position.x) >= .5f)
+        {
+            if (first)
+            {
+                Debug.Log("hek");
+                first = false;
+                animator.SetBool("isMoving", true);
+            }
+        }
+        else
+        {
+            first = true;
+            animator.SetBool("isMoving", false);
+        }
+    }
     // Update is called once per frame
     void Update()
     {
 
-        if((int)targetPosition.x != (int)transform.position.x) {
+        if(Mathf.Abs(targetPosition.x - transform.position.x) >= .5f) {
             
-            if(!animator.GetBool("isManjat")) { animator.SetBool("isMoving", true); }
-
             if (Mathf.Sign(targetPosition.x) != lookDirection && targetPosition.x != 0)
             {
+
                 lookDirection = (int)Mathf.Sign(targetPosition.x);
 
                 int yRot = lookDirection == 1 ? 0 : 180;
@@ -56,10 +74,12 @@ public class ChildController : MonoBehaviour
             Vector3 _direction = new(targetPosition.x - transform.position.x, 0f, 0f);
             transform.position += speed * Time.deltaTime * _direction.normalized;
             threshold += Time.deltaTime;
-            if (threshold >= 2f && hitSomething) { targetPosition = new(transform.position.x-1f, transform.position.y); }
+            Debug.Log(targetPosition.x);
+            if (threshold >= 2f && hitSomething) { Debug.Log("stuck");  targetPosition = new(transform.position.x-1f, transform.position.y); }
             prevPosition = transform.position;
         } else {
             animator.SetBool("isMoving", false);
+            Debug.Log("haha");
             isCalled = false;
         }
     }
