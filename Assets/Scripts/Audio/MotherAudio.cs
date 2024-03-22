@@ -1,18 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MotherAudio : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private readonly string[] callVoiceList = { "Mommy1", "Mommy2" };
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+    public void PlayCallChildVoice() {
+        AudioManager.Instance.PlaySFX(callVoiceList[Random.Range(0, callVoiceList.Length)]);
     }
 }

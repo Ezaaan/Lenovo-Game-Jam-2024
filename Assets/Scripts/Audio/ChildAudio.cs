@@ -6,7 +6,7 @@ public class ChildAudio : MonoBehaviour
 {
     private ChildController child;
     private Sound footstepSound;
-    
+
     private void Awake() {
         child = GetComponent<ChildController>();
     }

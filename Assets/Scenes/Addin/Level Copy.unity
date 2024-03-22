@@ -1987,9 +1987,27 @@ MonoBehaviour:
         m_Calls: []
   - sound: {fileID: 8300000, guid: 626d229f1dd876546a9cb51b0ae982bc, type: 3}
     name: Footstep
-    volume: 0.2
+    volume: 0.6
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+    OnFinishPlaying:
+      m_PersistentCalls:
+        m_Calls: []
+  - sound: {fileID: 8300000, guid: 5617a0eed6b6f5848bae40b5f9d3ac40, type: 3}
+    name: Mommy1
+    volume: 0.6
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+    OnFinishPlaying:
+      m_PersistentCalls:
+        m_Calls: []
+  - sound: {fileID: 8300000, guid: f8db74531c84ae64297908b9980d88ac, type: 3}
+    name: Mommy2
+    volume: 0.6
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
     OnFinishPlaying:
       m_PersistentCalls:

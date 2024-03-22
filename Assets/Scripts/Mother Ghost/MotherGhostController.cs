@@ -5,25 +5,17 @@ using UnityEngine;
 
 public class MilfGhostController : MonoBehaviour
 {
-    bool isCalling = false;
-
     public GameObject receivingObject;
+    private MotherAudio motherAudio;
+
     public float speed = 5f;
+    private void Awake() {
+        motherAudio = GetComponent<MotherAudio>();
+    }
     public void MoveLeft() {transform.position -= speed * Time.deltaTime * transform.right;}
     public void MoveRight() {transform.position += speed * Time.deltaTime * transform.right;}
-    public void CallLilNigga() {isCalling = true;}
-
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    void FixedUpdate()
-    {
-        if(isCalling) {
-            receivingObject.GetComponent<ChildController>().SetTargetPos(transform.position);
-            isCalling = false;
-        }
+    public void CallLilNigga() {
+        receivingObject.GetComponent<ChildController>().SetTargetPos(transform.position);
+        motherAudio.PlayCallChildVoice();
     }
 }
