@@ -58,14 +58,14 @@ public class PlayerMovement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0, yRot, 0);
         }
 
-        CurrentSpeed += acceleration * Time.fixedDeltaTime;
+        CurrentSpeed += acceleration * Time.deltaTime;
 
 
         CurrentSpeed = Mathf.Clamp(CurrentSpeed, 0, maxSpeed);
 
         // If the input is 0, use the buffer to maintain the last movement until current speed is 0
         Vector3 appliedMove = move;
-        transform.position += CurrentSpeed * Time.fixedDeltaTime * appliedMove;
+        transform.position += CurrentSpeed * Time.deltaTime * appliedMove;
     }
 
     private void FixedUpdate()
