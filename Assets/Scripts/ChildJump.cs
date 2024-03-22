@@ -9,6 +9,7 @@ public class ChildJump : MonoBehaviour
 
     public Transform groundCheck;
     public LayerMask groundLayer;
+    public Animator animator;
 
     Rigidbody2D rb;
     Vector2 RayOrigin;
@@ -32,8 +33,17 @@ public class ChildJump : MonoBehaviour
         
         if ((hitRight.collider != null || hitLeft.collider != null) && IsGrounded())
         {
+            animator.SetBool("isManjat", true);
             Debug.Log("Jump");
             Jump();
+        }
+        else
+        {
+           if(!(animator.GetCurrentAnimatorStateInfo(0).length >
+           animator.GetCurrentAnimatorStateInfo(0).normalizedTime) && animator.GetCurrentAnimatorStateInfo(0).IsName("bocil_manjat"))
+            {
+                animator.SetBool("isManjat", false);
+            }
         }
     }
 
@@ -44,6 +54,7 @@ public class ChildJump : MonoBehaviour
 
     private void Jump()
     {
+        //animator.SetBool("isManjat", true);
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
     }
 }

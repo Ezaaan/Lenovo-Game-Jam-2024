@@ -18,6 +18,7 @@ public class PlayerAction : MonoBehaviour
     private float deceleration;
 
     private bool isInputActive = true;
+    public Animator animator;
     //private GameManager gameManager;
     private void Awake()
     {
@@ -30,8 +31,21 @@ public class PlayerAction : MonoBehaviour
         
         if (Input.GetKeyDown(playerInput.SpecialAction))
         {
-            if (GameManager.instance.isMotherActive && gameObject.tag=="mommy") { CallAction(); }
+            if (GameManager.instance.isMotherActive && gameObject.tag=="mommy") {
+                //momCall.Play();
+                animator.SetBool("isCalling", true);
+                CallAction(); 
+                //animator.SetBool("isCalling", false);
+            }
             else { PossessAction(); }
+        }
+
+        if (Input.GetKeyUp(playerInput.SpecialAction))
+        {
+            if (GameManager.instance.isMotherActive && gameObject.tag == "mommy")
+            {
+                animator.SetBool("isCalling", false);
+            }
         }
     }
 
