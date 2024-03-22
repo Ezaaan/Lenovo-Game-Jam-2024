@@ -10,7 +10,7 @@ public class PossesionController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.Q))
         {
             Debug.Log("EEEE");
             PossessionManager.instance.SetControlToPlayer(gameObject);

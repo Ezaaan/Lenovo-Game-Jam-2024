@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 36755036308362569}
   - component: {fileID: 8555468173307891507}
   - component: {fileID: 1810443273672852839}
+  - component: {fileID: 7240746107339015760}
   m_Layer: 7
   m_Name: Key
   m_TagString: Possessable
@@ -166,9 +167,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2980822574094163815}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 26ef3c04710b8bc4b83f0e776aea524c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   isControlled: 0
+--- !u!114 &7240746107339015760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2980822574094163815}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1849aa8407b67c94ba107b129436bea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerInput: {fileID: 11400000, guid: 148b82e9eb322c7409550322ca7e9c75, type: 2}
+  maxSpeed: 5
+  timeToAccelerate: 0.2
+  lowerMarginX: 0.05
+  lowerMarginY: 0.05
+  upperMarginX: 0.95
+  upperMarginY: 0.95

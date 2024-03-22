@@ -29,12 +29,12 @@ public class FatherController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.Q))
         {
             checkColiders();
         }
 
-        if (Input.GetKeyUp(KeyCode.E))
+        if (Input.GetKeyUp(KeyCode.Q) && hitColliders.Count > 0)
         {
             SpriteRenderer spr = hitColliders[(index) % hitColliders.Count].gameObject.GetComponent<SpriteRenderer>();
             Debug.Log(spr);
@@ -49,9 +49,9 @@ public class FatherController : MonoBehaviour
 
         }
 
-        if (Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.Q))
         {
-            if (Input.GetKeyDown(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.E) && hitColliders.Count > 0)
             {
                 Debug.Log(index);
                 int nextInd = index + 1;
