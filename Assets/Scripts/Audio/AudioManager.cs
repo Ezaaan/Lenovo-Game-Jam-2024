@@ -32,7 +32,6 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(string name) {
         Sound s = GetSound(name);
-        Debug.Log("SFX played: " + name);
         s.source.Play();
 
         if (!s.loop && s.OnFinishPlaying != null) {
