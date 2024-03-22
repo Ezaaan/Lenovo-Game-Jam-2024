@@ -50,8 +50,6 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
-        Debug.Log("Playing BGM: " + s.name);
-
         playedBGM?.source.Stop();
         playedBGM = s;
         s.source.Play();
@@ -66,7 +64,6 @@ public class AudioManager : MonoBehaviour
         while (s.source.isPlaying) {
             yield return null;
         }
-        Debug.Log("Audio finished playing: " + s.name);
         s.OnFinishPlaying.Invoke();
     }
 }
