@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class ChildJump : MonoBehaviour
 {
-    public float rayDistance = 15f;
+    public float rayDistance = 10f;
     public float jumpForce = 20f;
 
     public Transform groundCheck;
     public LayerMask groundLayer;
-    bool isGrounded;
 
     Rigidbody2D rb;
+    Vector2 RayOrigin;
 
     // Start is called before the first frame update
     private void Start()
@@ -21,21 +21,25 @@ public class ChildJump : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1.0f, 0.3f), CapsuleDirection2D.Horizontal, 0, groundLayer);
+        RayOrigin = transform.position + new Vector3(0, -10f, 0);
+        RaycastHit2D hitRight = Physics2D.Raycast(RayOrigin, Vector2.right, rayDistance);
 
+        RaycastHit2D hitLeft = Physics2D.Raycast(RayOrigin, Vector2.left, rayDistance);
 
-        RaycastHit2D hitRight = Physics2D.Raycast(transform.position, Vector2.right, rayDistance);
+        Debug.DrawRay(RayOrigin, Vector2.right * rayDistance, Color.red);
+        Debug.DrawRay(RayOrigin, Vector2.left * rayDistance, Color.red);
 
-        RaycastHit2D hitLeft = Physics2D.Raycast(transform.position, Vector2.left, rayDistance);
-
-        Debug.DrawRay(transform.position, Vector2.right * rayDistance, Color.red);
-        Debug.DrawRay(transform.position, Vector2.left * rayDistance, Color.red);
         
-        if ((hitRight.collider != null || hitLeft.collider != null) && isGrounded)
+        if ((hitRight.collider != null || hitLeft.collider != null) && IsGrounded())
         {
             Debug.Log("Jump");
             Jump();
         }
+    }
+
+    private bool IsGrounded()
+    {
+        return Physics2D.OverlapCapsule(groundCheck.position, new Vector2(1f, 1f), CapsuleDirection2D.Horizontal, 0, groundLayer);
     }
 
     private void Jump()
